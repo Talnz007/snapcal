@@ -1,0 +1,12 @@
+{
+  "name": "snapcal",
+  "version": "1.0.0",
+  "description": "Offline math solver using Chrome Built-in AI",
+  "scripts": {
+    "dev": "npx serve public -p 8000",
+    "start": "npm run dev"
+  },
+  "keywords": ["chrome-ai", "gemini-nano", "pwa", "math-solver", "education"],
+  "author": "Talha Niazi",
+  "license": "MIT"
+}

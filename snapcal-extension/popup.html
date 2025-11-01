@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SnapCal - AI Math Solver</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <!-- MathJax config -->
+  <script>
+    window.MathJax = {
+      tex: { 
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      startup: { ready: () => MathJax.startup.defaultReady() }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="ai-manager.js"></script>
+
+  <style>
+    html,body { height:100%; }
+    .loading-spinner {
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .accordion-content.open {
+      max-height: 500px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 min-h-screen p-4 font-sans">
+  <div class="bg-white rounded-xl shadow-lg p-4 w-[420px]">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-indigo-700">🧮 SnapCal</h1>
+        <p class="text-sm text-gray-600">AI-powered math solver with Chrome's built-in AI</p>
+      </div>
+      <div id="aiCapabilities" class="text-xs text-gray-500"></div>
+    </div>
+
+    <!-- Input Methods -->
+    <div class="space-y-3 mb-4">
+      <div class="grid grid-cols-2 gap-2">
+        <button id="captureBtn" class="bg-indigo-600 text-white py-2 px-3 rounded-lg hover:bg-indigo-700 transition-colors text-sm">
+          📸 Capture Screen
+        </button>
+        <button id="textInputBtn" class="bg-green-600 text-white py-2 px-3 rounded-lg hover:bg-green-700 transition-colors text-sm">
+          ✏️ Type Problem
+        </button>
+      </div>
+      
+      <div class="flex items-center space-x-2">
+        <label class="text-xs text-gray-500 flex-shrink-0">Or upload:</label>
+        <input id="fileInput" type="file" accept="image/*" class="flex-1 text-xs" />
+      </div>
+
+      <!-- Text Input Area (hidden by default) -->
+      <div id="textInputArea" class="hidden">
+        <textarea id="textInput" placeholder="Type or paste your math problem here..." 
+                  class="w-full p-2 border rounded-lg text-sm h-20 resize-none"></textarea>
+        <button id="solveTextBtn" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm mt-2">
+          🧮 Solve Problem
+        </button>
+      </div>
+    </div>
+
+    <!-- Status and Progress -->
+    <div class="space-y-2 mb-4">
+      <div id="ocrStatus" class="text-sm text-gray-500 min-h-[20px]"></div>
+      <div id="apiStatus" class="text-sm text-gray-500 min-h-[20px]"></div>
+      <div id="progressBar" class="hidden">
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div id="progressFill" class="bg-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="output" class="space-y-3"></div>
+
+    <!-- Options Panel -->
+    <div class="mt-4 pt-4 border-t border-gray-200">
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center space-x-4">
+          <label class="flex items-center">
+            <input type="checkbox" id="generateSummary" checked class="mr-1">
+            <span class="text-gray-600">Summary</span>
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" id="streamingMode" class="mr-1">
+            <span class="text-gray-600">Streaming</span>
+          </label>
+        </div>
+        <button id="clearBtn" class="text-gray-500 hover:text-gray-700">Clear</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-3 text-xs text-gray-400 text-center">
+      Powered by Chrome's built-in AI • Privacy-first • Works offline
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    async function runNano() {
+      if (!('ai' in self)) {
+        console.error("AI Prompt API not supported in this build.");
+        return;
+      }
+
+      const session = await ai.createTextSession({
+        systemPrompt: "You are a helpful local AI assistant."
+      });
+
+      const result = await session.prompt("Summarize the concept of attention in transformers.");
+      console.log(result);
+    }
+
+    runNano();
+  </script>
+</body>
+</html>

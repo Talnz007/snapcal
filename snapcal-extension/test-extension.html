@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapCal Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .math-problem {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .instructions {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧮 SnapCal Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h3>📋 Testing Instructions</h3>
+        <ol>
+            <li>Make sure you have Chrome 131+ with AI flags enabled</li>
+            <li>Load the SnapCal extension in <code>chrome://extensions</code></li>
+            <li>Test each method below using the SnapCal extension</li>
+            <li>Verify that solutions appear with proper LaTeX rendering</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>🖱️ Test 1: Context Menu Selection</h2>
+        <p><strong>Instructions:</strong> Select the math problem below, right-click, and choose "Solve with SnapCal"</p>
+        <div class="math-problem">
+            <p>Solve for x: 2x + 5 = 17</p>
+        </div>
+        <div class="math-problem">
+            <p>Find the derivative: f(x) = 3x² + 2x - 1</p>
+        </div>
+        <div class="math-problem">
+            <p>Integrate: ∫(x² + 3x + 2)dx</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📸 Test 2: Screen Capture</h2>
+        <p><strong>Instructions:</strong> Click the SnapCal extension icon, then click "📸 Capture Screen"</p>
+        <div class="math-problem">
+            <h3>Quadratic Formula</h3>
+            <p>x = (-b ± √(b² - 4ac)) / 2a</p>
+            <p>For equation: x² - 5x + 6 = 0</p>
+            <p>Where a = 1, b = -5, c = 6</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>✏️ Test 3: Text Input</h2>
+        <p><strong>Instructions:</strong> Click the SnapCal extension icon, then click "✏️ Type Problem" and enter one of these:</p>
+        <ul>
+            <li><code>sin(π/4) + cos(π/3)</code></li>
+            <li><code>lim(x→0) (sin(x)/x)</code></li>
+            <li><code>∫₀¹ x²dx</code></li>
+            <li><code>solve: 3x + 7 = 2x - 4</code></li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>📁 Test 4: File Upload</h2>
+        <p><strong>Instructions:</strong> Take a screenshot of the math problems above, save as PNG/JPG, then upload via the extension</p>
+        <div class="math-problem">
+            <h3>System of Equations</h3>
+            <p>2x + 3y = 12</p>
+            <p>x - y = 1</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Test 5: AI Features</h2>
+        <p><strong>Instructions:</strong> After solving any problem, test these features:</p>
+        <ul>
+            <li>Click "💡 Explain" to generate a summary</li>
+            <li>Click "✏️ Simplify" to rewrite the explanation</li>
+            <li>Click "📋 Copy" to copy the solution</li>
+            <li>Toggle "Streaming" mode and solve another problem</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>✅ Expected Results</h2>
+        <ul>
+            <li>✅ Solutions appear with proper mathematical notation</li>
+            <li>✅ Step-by-step explanations are expandable</li>
+            <li>✅ LaTeX renders correctly (fractions, square roots, etc.)</li>
+            <li>✅ AI explanations are generated successfully</li>
+            <li>✅ Copy functionality works</li>
+            <li>✅ No console errors in DevTools</li>
+            <li>✅ All buttons respond with hover effects</li>
+        </ul>
+    </div>
+
+    <div class="instructions">
+        <h3>🐛 Troubleshooting</h3>
+        <p>If something doesn't work:</p>
+        <ol>
+            <li>Check <code>chrome://flags</code> - ensure AI flags are enabled</li>
+            <li>Check <code>chrome://components</code> - ensure Gemini Nano is downloaded</li>
+            <li>Open DevTools (F12) and check for errors in Console</li>
+            <li>Try restarting Chrome completely</li>
+            <li>Verify you're using Chrome 131+ Canary/Dev</li>
+        </ol>
+    </div>
+
+    <footer style="margin-top: 50px; text-align: center; color: #666;">
+        <p>🧮 SnapCal Enhanced - Built for Chrome AI Challenge 2025</p>
+    </footer>
+</body>
+</html>
